@@ -12,7 +12,7 @@ print("msg sent successfully ")
 
 # connection to hostname on the port.
 ms.connect((host, port))
-
+print(host, port)
 
 message = b"hello world!!!"
 ms.sendall(message)
