@@ -7,15 +7,23 @@ ms.listen(5)
 print('Server started')
 
 while True:
-    conn, addr = ms.accept()
-    print('Got connection from', addr)
-    conn.send(b'Thank you for connecting')
-    data = conn.recv(1000)
-    print(str(data))
-    if not data:
-        break
+        conn, addr = ms.accept()
+        print('Got connection from', addr)
+        while True:
+            data = conn.recv(5000)
+            data = data.decode('utf-8')
 
-conn.close()
-print('connection close')
-ms.close()
-print('Server close')
+            if data == 'finish':
+                print('connection finish')
+                conn.close()
+                ms.close()
+                print('Server close')
+            else:
+                if data == 'roshan':
+                    print('Roshaaaaan!!!')
+                if data == 'khamoosh':
+                    print('khamoooosh!!!')
+                else:
+                    print(data)
+
+
